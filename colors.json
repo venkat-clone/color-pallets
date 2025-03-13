@@ -1,0 +1,372 @@
+{
+  "darkTheme": {
+    "red": {
+      "background": [
+        {
+          "colorcode": "#5C0000",
+          "description": "Deep Burgundy: A rich, dark red that works well as a subtle background."
+        },
+        {
+          "colorcode": "#800000",
+          "description": "Maroon: A dark brownish-red providing depth without being too intense."
+        },
+        {
+          "colorcode": "#8B0000",
+          "description": "Dark Red: A deep, intense red that creates a striking background."
+        },
+        {
+          "colorcode": "#4B0101",
+          "description": "Blood Red: An extremely dark red with excellent contrast capabilities."
+        },
+        {
+          "colorcode": "#3D0C02",
+          "description": "Black Bean: A very dark reddish-brown, almost black with red undertones."
+        }
+      ],
+      "text": [
+        {
+          "colorcode": "#FF6B6B",
+          "description": "Light Coral Red: A bright but not harsh red, ideal for highlighting text."
+        },
+        {
+          "colorcode": "#FF8080",
+          "description": "Light Red: A soft red with good visibility against dark backgrounds."
+        },
+        {
+          "colorcode": "#FF5252",
+          "description": "Red Accent: A vibrant red that stands out without straining the eyes."
+        },
+        {
+          "colorcode": "#F08080",
+          "description": "Light Coral: A pale red with excellent readability."
+        },
+        {
+          "colorcode": "#FFCCCB",
+          "description": "Soft Red: A very light, pastel red for subtle emphasis."
+        }
+      ]
+    },
+    "green": {
+      "background": [
+        {
+          "colorcode": "#0F3B0F",
+          "description": "Forest Green: A deep, dark green reminiscent of dense forests."
+        },
+        {
+          "colorcode": "#1B4D3E",
+          "description": "Brunswick Green: A dark blue-green that's easy on the eyes."
+        },
+        {
+          "colorcode": "#004D40",
+          "description": "Deep Teal: A dark green with blue undertones, creating a sophisticated look."
+        },
+        {
+          "colorcode": "#002800",
+          "description": "Dark Forest: An extremely dark green providing strong contrast."
+        },
+        {
+          "colorcode": "#043927",
+          "description": "Sacramento Green: A deep, rich green with balanced darkness."
+        }
+      ],
+      "text": [
+        {
+          "colorcode": "#8FBC8F",
+          "description": "Dark Sea Green: A mid-tone green with excellent readability."
+        },
+        {
+          "colorcode": "#90EE90",
+          "description": "Light Green: A bright but soft green that pops on dark backgrounds."
+        },
+        {
+          "colorcode": "#7FFF7F",
+          "description": "Pastel Green: A light, minty green with high visibility."
+        },
+        {
+          "colorcode": "#98FB98",
+          "description": "Pale Green: A soft, luminous green for important text elements."
+        },
+        {
+          "colorcode": "#CCFFCC",
+          "description": "Very Light Green: An extremely light green for subtle highlighting."
+        }
+      ]
+    },
+    "yellow": {
+      "background": [
+        {
+          "colorcode": "#3F3800",
+          "description": "Dark Bronze: A very dark yellow-brown with excellent contrast properties."
+        },
+        {
+          "colorcode": "#4B4000",
+          "description": "Olive Brown: A dark, muted yellow with brown undertones."
+        },
+        {
+          "colorcode": "#554800",
+          "description": "Dark Olive: A deeper yellow with earthy characteristics."
+        },
+        {
+          "colorcode": "#4F4600",
+          "description": "Army Green: A dark yellow-green that feels grounded and stable."
+        },
+        {
+          "colorcode": "#5B4F00",
+          "description": "Golden Brown: A rich, dark gold with sophisticated presence."
+        }
+      ],
+      "text": [
+        {
+          "colorcode": "#FFF44F",
+          "description": "Lemon Yellow: A bright yellow that stands out vividly on dark backgrounds."
+        },
+        {
+          "colorcode": "#FFEB99",
+          "description": "Pale Yellow: A soft yellow with excellent readability."
+        },
+        {
+          "colorcode": "#FFD700",
+          "description": "Gold: A rich yellow with good contrast and emphasis."
+        },
+        {
+          "colorcode": "#F8F8A0",
+          "description": "Light Yellow: A soft, pastel yellow for gentle highlighting."
+        },
+        {
+          "colorcode": "#FFFACD",
+          "description": "Lemon Chiffon: A very light yellow for subtle accents."
+        }
+      ]
+    },
+    "orange": {
+      "background": [
+        {
+          "colorcode": "#4A2700",
+          "description": "Dark Brown: A deep orange-brown that creates a warm, rich background."
+        },
+        {
+          "colorcode": "#5E2900",
+          "description": "Burnt Sienna: A dark orange with rich brown undertones."
+        },
+        {
+          "colorcode": "#542E00",
+          "description": "Chocolate: A deep, warm brown with orange hints."
+        },
+        {
+          "colorcode": "#492000",
+          "description": "Caput Mortuum: An extremely dark reddish-brown with orange undertones."
+        },
+        {
+          "colorcode": "#3D1C02",
+          "description": "Bistre: A dark, smoky brown with warm characteristics."
+        }
+      ],
+      "text": [
+        {
+          "colorcode": "#FFB347",
+          "description": "Pastel Orange: A soft orange with good visibility against dark backgrounds."
+        },
+        {
+          "colorcode": "#FFA07A",
+          "description": "Light Salmon: A light orange-pink that stands out without being harsh."
+        },
+        {
+          "colorcode": "#FF9966",
+          "description": "Atomic Tangerine: A bright but not overwhelming orange for emphasis."
+        },
+        {
+          "colorcode": "#FFCC99",
+          "description": "Peach: A very light orange that's gentle on the eyes."
+        },
+        {
+          "colorcode": "#FFDAB9",
+          "description": "Peach Puff: An extremely light orange for subtle highlights."
+        }
+      ]
+    },
+    "white": {
+      "background": [
+        {
+          "colorcode": "#1C1C1C",
+          "description": "Off-Black: A very dark gray that's softer than true black."
+        },
+        {
+          "colorcode": "#242424",
+          "description": "Charleston Green: A dark gray that reduces eye strain."
+        },
+        {
+          "colorcode": "#282828",
+          "description": "Raisin Black: A very dark gray with slight warmth."
+        },
+        {
+          "colorcode": "#2E2E2E",
+          "description": "Jet: A deep gray with excellent contrast properties."
+        },
+        {
+          "colorcode": "#333333",
+          "description": "Dark Charcoal: A medium-dark gray that's easier on the eyes than pure black."
+        }
+      ],
+      "text": [
+        {
+          "colorcode": "#F5F5F5",
+          "description": "White Smoke: A slightly softened white with reduced glare."
+        },
+        {
+          "colorcode": "#FAFAFA",
+          "description": "Cultured: A very light gray that appears white but with less intensity."
+        },
+        {
+          "colorcode": "#F0F0F0",
+          "description": "Platinum: A soft white with a hint of gray for readability."
+        },
+        {
+          "colorcode": "#E8E8E8",
+          "description": "Gainsboro: A light gray that reduces eye strain compared to pure white."
+        },
+        {
+          "colorcode": "#DCDCDC",
+          "description": "Light Gray: A soft gray that maintains good contrast on dark backgrounds."
+        }
+      ]
+    },
+    "black": {
+      "background": [
+        {
+          "colorcode": "#000000",
+          "description": "True Black: The darkest color, perfect for OLED displays."
+        },
+        {
+          "colorcode": "#0A0A0A",
+          "description": "Night: A nearly-black color with just a hint of visibility."
+        },
+        {
+          "colorcode": "#121212",
+          "description": "Midnight: A very dark gray that's slightly softer than pure black."
+        },
+        {
+          "colorcode": "#141414",
+          "description": "Onyx: A rich, deep almost-black that's easier on the eyes."
+        },
+        {
+          "colorcode": "#0F0F0F",
+          "description": "Noir: A cinematic black with subtle depth."
+        }
+      ],
+      "text": [
+        {
+          "colorcode": "#C0C0C0",
+          "description": "Silver: A medium gray with excellent readability on dark backgrounds."
+        },
+        {
+          "colorcode": "#A9A9A9",
+          "description": "Dark Gray: A balanced gray for less emphasized text."
+        },
+        {
+          "colorcode": "#808080",
+          "description": "Gray: A medium gray for secondary content."
+        },
+        {
+          "colorcode": "#D3D3D3",
+          "description": "Light Gray: A soft gray that stands out well against dark backgrounds."
+        },
+        {
+          "colorcode": "#696969",
+          "description": "Dim Gray: A darker gray for subtle, less emphasized text."
+        }
+      ]
+    },
+    "blue": {
+      "background": [
+        {
+          "colorcode": "#00008B",
+          "description": "Dark Blue: A deep blue providing strong contrast and depth."
+        },
+        {
+          "colorcode": "#191970",
+          "description": "Midnight Blue: A very dark blue with purple undertones."
+        },
+        {
+          "colorcode": "#000033",
+          "description": "Deep Navy: An extremely dark blue, almost black."
+        },
+        {
+          "colorcode": "#003366",
+          "description": "Dark Navy: A rich blue with balanced darkness."
+        },
+        {
+          "colorcode": "#0F056B",
+          "description": "Duke Blue: A deep, intense blue with good contrast properties."
+        }
+      ],
+      "text": [
+        {
+          "colorcode": "#87CEEB",
+          "description": "Sky Blue: A light, bright blue with excellent visibility."
+        },
+        {
+          "colorcode": "#ADD8E6",
+          "description": "Light Blue: A soft, pastel blue that's easy to read."
+        },
+        {
+          "colorcode": "#B0E0E6",
+          "description": "Powder Blue: A very light blue with a hint of green."
+        },
+        {
+          "colorcode": "#00BFFF",
+          "description": "Deep Sky Blue: A vibrant blue that pops against dark backgrounds."
+        },
+        {
+          "colorcode": "#E0FFFF",
+          "description": "Light Cyan: An extremely light blue for subtle emphasis."
+        }
+      ]
+    },
+    "purple": {
+      "background": [
+        {
+          "colorcode": "#2E0854",
+          "description": "Indigo: A deep purple with excellent contrast properties."
+        },
+        {
+          "colorcode": "#301934",
+          "description": "Dark Purple: A rich, deep purple with balanced darkness."
+        },
+        {
+          "colorcode": "#4B0082",
+          "description": "Indigo Purple: A deep purple with blue undertones."
+        },
+        {
+          "colorcode": "#240935",
+          "description": "Russian Violet: An extremely dark purple with subtle richness."
+        },
+        {
+          "colorcode": "#32174D",
+          "description": "Persian Indigo: A deep, rich purple with royal characteristics."
+        }
+      ],
+      "text": [
+        {
+          "colorcode": "#E6E6FA",
+          "description": "Lavender: A very light purple that's gentle on the eyes."
+        },
+        {
+          "colorcode": "#D8BFD8",
+          "description": "Thistle: A soft, muted purple with good readability."
+        },
+        {
+          "colorcode": "#DDA0DD",
+          "description": "Plum: A medium-light purple with good emphasis."
+        },
+        {
+          "colorcode": "#CCCCFF",
+          "description": "Periwinkle: A light blue-purple with excellent visibility."
+        },
+        {
+          "colorcode": "#B19CD9",
+          "description": "Light Purple: A soft, medium-light purple that stands out well."
+        }
+      ]
+    }
+  }
+}
