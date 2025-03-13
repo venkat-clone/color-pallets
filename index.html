@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .theme-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .toggle-button {
+            padding: 8px 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .toggle-button.active {
+            background-color: #666;
+        }
+        .color-category {
+            margin-bottom: 50px;
+        }
+        .color-category h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+            color: #333;
+        }
+        .subcategory {
+            margin-bottom: 30px;
+        }
+        .subcategory h3 {
+            text-align: center;
+            margin: 15px 0;
+            color: #555;
+            text-transform: capitalize;
+        }
+        .colors-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .color-item {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .color-box {
+            width: 120px;
+            height: 120px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .color-box:hover {
+            transform: scale(1.05);
+        }
+        .color-code {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+        .color-description {
+            text-align: center;
+            color: #333;
+            font-size: 14px;
+            margin-top: 10px;
+            width: 120px;
+            text-align: center;
+        }
+        .copy-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            border-radius: 4px;
+            padding: 3px 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+        .copy-button:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .copy-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            z-index: 1000;
+            display: none;
+        }
+        /* For dark mode preview */
+        body.dark-preview {
+            background-color: #121212;
+            color: #f1f1f1;
+        }
+        body.dark-preview .color-category h2 {
+            color: #f1f1f1;
+        }
+        body.dark-preview .subcategory h3 {
+            color: #e0e0e0;
+        }
+        body.dark-preview .color-description {
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dark Theme Color Palette Preview</h1>
+    
+    <div class="theme-toggle">
+        <button id="lightModeBtn" class="toggle-button active">Light Mode</button>
+        <button id="darkModeBtn" class="toggle-button">Dark Mode</button>
+    </div>
+    
+    <div id="colors"></div>
+    <div id="copyMessage" class="copy-message">Color code copied!</div>
+
+    <script>
+
+
+        // Fetch and load colors
+        document.addEventListener('DOMContentLoaded', function() {
+            // If you're loading from a file:
+            fetch('colors.json')
+                .then(response => response.json())
+                .then(data => displayColors(data))
+                .catch(error => console.error('Error loading JSON file:', error));
+            
+            // For this example, let's assume we're embedding the JSON data directly:
+            // Replace this with your actual JSON data or fetch from file
+            // const jsonData = {
+            //     "darkTheme": {
+            //         "red": {
+            //             "background": [
+            //                 {
+            //                     "colorcode": "#5C0000",
+            //                     "description": "Deep Burgundy: A rich, dark red that works well as a subtle background."
+            //                 },
+            //                 {
+            //                     "colorcode": "#800000",
+            //                     "description": "Maroon: A dark brownish-red providing depth without being too intense."
+            //                 },
+            //                 {
+            //                     "colorcode": "#8B0000",
+            //                     "description": "Dark Red: A deep, intense red that creates a striking background."
+            //                 },
+            //                 {
+            //                     "colorcode": "#4B0101",
+            //                     "description": "Blood Red: An extremely dark red with excellent contrast capabilities."
+            //                 },
+            //                 {
+            //                     "colorcode": "#3D0C02",
+            //                     "description": "Black Bean: A very dark reddish-brown, almost black with red undertones."
+            //                 }
+            //             ],
+            //             "text": [
+            //                 {
+            //                     "colorcode": "#FF6B6B",
+            //                     "description": "Light Coral Red: A bright but not harsh red, ideal for highlighting text."
+            //                 },
+            //                 {
+            //                     "colorcode": "#FF8080",
+            //                     "description": "Light Red: A soft red with good visibility against dark backgrounds."
+            //                 },
+            //                 {
+            //                     "colorcode": "#FF5252",
+            //                     "description": "Red Accent: A vibrant red that stands out without straining the eyes."
+            //                 },
+            //                 {
+            //                     "colorcode": "#F08080",
+            //                     "description": "Light Coral: A pale red with excellent readability."
+            //                 },
+            //                 {
+            //                     "colorcode": "#FFCCCB",
+            //                     "description": "Soft Red: A very light, pastel red for subtle emphasis."
+            //                 }
+            //             ]
+            //         },
+            //         // Add all other color categories from the provided JSON
+            //         "green": {
+            //             "background": [
+            //                 {
+            //                     "colorcode": "#0F3B0F",
+            //                     "description": "Forest Green: A deep, dark green reminiscent of dense forests."
+            //                 },
+            //                 {
+            //                     "colorcode": "#1B4D3E",
+            //                     "description": "Brunswick Green: A dark blue-green that's easy on the eyes."
+            //                 },
+            //                 {
+            //                     "colorcode": "#004D40",
+            //                     "description": "Deep Teal: A dark green with blue undertones, creating a sophisticated look."
+            //                 },
+            //                 {
+            //                     "colorcode": "#002800",
+            //                     "description": "Dark Forest: An extremely dark green providing strong contrast."
+            //                 },
+            //                 {
+            //                     "colorcode": "#043927",
+            //                     "description": "Sacramento Green: A deep, rich green with balanced darkness."
+            //                 }
+            //             ],
+            //             "text": [
+            //                 {
+            //                     "colorcode": "#8FBC8F",
+            //                     "description": "Dark Sea Green: A mid-tone green with excellent readability."
+            //                 },
+            //                 {
+            //                     "colorcode": "#90EE90",
+            //                     "description": "Light Green: A bright but soft green that pops on dark backgrounds."
+            //                 },
+            //                 {
+            //                     "colorcode": "#7FFF7F",
+            //                     "description": "Pastel Green: A light, minty green with high visibility."
+            //                 },
+            //                 {
+            //                     "colorcode": "#98FB98",
+            //                     "description": "Pale Green: A soft, luminous green for important text elements."
+            //                 },
+            //                 {
+            //                     "colorcode": "#CCFFCC",
+            //                     "description": "Very Light Green: An extremely light green for subtle highlighting."
+            //                 }
+            //             ]
+            //         },
+            //         "blue": {
+            //             "background": [
+            //                 {
+            //                     "colorcode": "#00008B",
+            //                     "description": "Dark Blue: A deep blue providing strong contrast and depth."
+            //                 },
+            //                 {
+            //                     "colorcode": "#191970",
+            //                     "description": "Midnight Blue: A very dark blue with purple undertones."
+            //                 },
+            //                 {
+            //                     "colorcode": "#000033",
+            //                     "description": "Deep Navy: An extremely dark blue, almost black."
+            //                 },
+            //                 {
+            //                     "colorcode": "#003366",
+            //                     "description": "Dark Navy: A rich blue with balanced darkness."
+            //                 },
+            //                 {
+            //                     "colorcode": "#0F056B",
+            //                     "description": "Duke Blue: A deep, intense blue with good contrast properties."
+            //                 }
+            //             ],
+            //             "text": [
+            //                 {
+            //                     "colorcode": "#87CEEB",
+            //                     "description": "Sky Blue: A light, bright blue with excellent visibility."
+            //                 },
+            //                 {
+            //                     "colorcode": "#ADD8E6",
+            //                     "description": "Light Blue: A soft, pastel blue that's easy to read."
+            //                 },
+            //                 {
+            //                     "colorcode": "#B0E0E6",
+            //                     "description": "Powder Blue: A very light blue with a hint of green."
+            //                 },
+            //                 {
+            //                     "colorcode": "#00BFFF",
+            //                     "description": "Deep Sky Blue: A vibrant blue that pops against dark backgrounds."
+            //                 },
+            //                 {
+            //                     "colorcode": "#E0FFFF",
+            //                     "description": "Light Cyan: An extremely light blue for subtle emphasis."
+            //                 }
+            //             ]
+            //         }
+            //         // Continue adding other color categories here
+            //     }
+            // };
+            
+            displayColors(jsonData);
+            
+            // Set up theme toggle functionality
+            document.getElementById('lightModeBtn').addEventListener('click', function() {
+                document.body.classList.remove('dark-preview');
+                this.classList.add('active');
+                document.getElementById('darkModeBtn').classList.remove('active');
+            });
+            
+            document.getElementById('darkModeBtn').addEventListener('click', function() {
+                document.body.classList.add('dark-preview');
+                this.classList.add('active');
+                document.getElementById('lightModeBtn').classList.remove('active');
+            });
+        });
+
+        // Function to display the colors based on our JSON structure
+        function displayColors(data) {
+            const colorsContainer = document.getElementById('colors');
+            colorsContainer.innerHTML = ''; // Clear any existing content
+            
+            // Access darkTheme object which contains all our color categories
+            const darkTheme = data.darkTheme;
+            
+            for (const colorName in darkTheme) {
+                const colorCategory = darkTheme[colorName];
+                
+                // Create category container
+                const categoryDiv = document.createElement('div');
+                categoryDiv.classList.add('color-category');
+                
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.textContent = colorName.charAt(0).toUpperCase() + colorName.slice(1);
+                categoryDiv.appendChild(categoryTitle);
+                
+                // Create background colors subcategory
+                if (colorCategory.background && colorCategory.background.length > 0) {
+                    const backgroundSubcategory = createSubcategory('Background', colorCategory.background);
+                    categoryDiv.appendChild(backgroundSubcategory);
+                }
+                
+                // Create text colors subcategory
+                if (colorCategory.text && colorCategory.text.length > 0) {
+                    const textSubcategory = createSubcategory('Text', colorCategory.text);
+                    categoryDiv.appendChild(textSubcategory);
+                }
+                
+                colorsContainer.appendChild(categoryDiv);
+            }
+        }
+        
+        // Function to create a subcategory section (background or text)
+        function createSubcategory(title, colors) {
+            const subcategoryDiv = document.createElement('div');
+            subcategoryDiv.classList.add('subcategory');
+            
+            const subcategoryTitle = document.createElement('h3');
+            subcategoryTitle.textContent = title;
+            subcategoryDiv.appendChild(subcategoryTitle);
+            
+            const colorsWrapper = document.createElement('div');
+            colorsWrapper.classList.add('colors-wrapper');
+            
+            colors.forEach(color => {
+                const colorItem = createColorItem(color);
+                colorsWrapper.appendChild(colorItem);
+            });
+            
+            subcategoryDiv.appendChild(colorsWrapper);
+            return subcategoryDiv;
+        }
+        
+        // Function to create a single color item
+        function createColorItem(color) {
+            const colorItemDiv = document.createElement('div');
+            colorItemDiv.classList.add('color-item');
+            
+            const colorBox = document.createElement('div');
+            colorBox.classList.add('color-box');
+            colorBox.style.backgroundColor = color.colorcode;
+            
+            // Add color code at the bottom of the box
+            const codeDiv = document.createElement('div');
+            codeDiv.classList.add('color-code');
+            codeDiv.textContent = color.colorcode;
+            colorBox.appendChild(codeDiv);
+            
+            // Add copy button
+            const copyButton = document.createElement('button');
+            copyButton.classList.add('copy-button');
+            copyButton.textContent = 'Copy';
+            copyButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                copyToClipboard(color.colorcode);
+            });
+            colorBox.appendChild(copyButton);
+            
+            // Add description below
+            const descriptionDiv = document.createElement('div');
+            descriptionDiv.classList.add('color-description');
+            
+            // Extract the first part of the description (before the colon)
+            const colorName = color.description.split(':')[0];
+            const colorDesc = color.description.split(':')[1] || '';
+            
+            descriptionDiv.innerHTML = `<strong>${colorName}</strong>${colorDesc}`;
+            
+            colorItemDiv.appendChild(colorBox);
+            colorItemDiv.appendChild(descriptionDiv);
+            
+            return colorItemDiv;
+        }
+        
+        // Function to copy color code to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show copy message
+                const copyMessage = document.getElementById('copyMessage');
+                copyMessage.textContent = `Copied: ${text}`;
+                copyMessage.style.display = 'block';
+                
+                // Hide message after 2 seconds
+                setTimeout(() => {
+                    copyMessage.style.display = 'none';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
